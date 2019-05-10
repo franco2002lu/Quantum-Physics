@@ -47,19 +47,19 @@ class Schrodinger(object):
             initial tile (default = 0)
         """
         # Validation of array inputs
-        self.x, psi_x0, self.V_x = map(np.asarray, (x, psi_x0, V_x))
-        N = self.x.size
-        assert self.x.shape == (N,)
-        assert psi_x0.shape == (N,)
-        assert self.V_x.shape == (N,)
+        self.x, psi_x0, self.V_x = map(np.asarray, (x, psi_x0, V_x)) #using the map function convert the input to an array
+        N = self.x.size     #This is array's size
+        assert self.x.shape == (N,)     #Make sure the float length array is in length N
+        assert psi_x0.shape == (N,)     #Make sure the complex length array is in length N 
+        assert self.V_x.shape == (N,)   #Make sure the potential complex length array is in length N 
 
         # Set internal parameters
-        self.hbar = hbar
-        self.m = m
-        self.t = t0
-        self.dt_ = None
-        self.N = len(x)
-        self.dx = self.x[1] - self.x[0]
+        self.hbar = hbar # initialize value of planck's constant
+        self.m = m  # initialize value of planck's constant
+        self.t = t0 # initialize value of tile
+        self.dt_ = None # initialize the time interval
+        self.N = len(x) # initialize the steps
+        self.dx = self.x[1] - self.x[0] # initialize the distance between the steps (derivative)
         self.dk = 2 * np.pi / (self.N * self.dx)
 
         # set momentum scale
